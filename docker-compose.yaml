@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  question-service:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "9192:9191"
+    environment:
+      DB_DRIVER: org.postgresql.Driver
+      DB_URL: jdbc:postgresql://postgres:5432/rest-spring-boot
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    networks:
+      - network
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rest-spring-boot
+    volumes:
+      - postgres-for-question-service:/var/lib/postgresql/data
+    networks:
+      - network
+
+volumes:
+  postgres-for-question-service:
+
+networks:
+  network:
