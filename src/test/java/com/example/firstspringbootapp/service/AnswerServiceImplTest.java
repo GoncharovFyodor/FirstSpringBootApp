@@ -14,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,6 +32,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @ExtendWith(MockitoExtension.class)
 @ActiveProfiles("test")
 class AnswerServiceImplTest {
+    static final PostgreSQLContainer<?> postgresContainer;
+    static{
+        postgresContainer = new PostgreSQLContainer<>("postgres:12")
+                .withDatabaseName("rest-spring-boot")
+                .withUsername("postgres")
+                .withPassword("postgres");
+    }
     @Mock
     private AnswerRepository answerRepository;
     @InjectMocks
@@ -51,6 +61,12 @@ class AnswerServiceImplTest {
         answers=new ArrayList<>();
         answers.add(answer);
         answers.add(answer1);
+    }
+    @DynamicPropertySource
+    static void sourceConfiguration(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgresContainer::getJdbcUrl);
+        registry.add("spring.datasource.username", postgresContainer::getUsername);
+        registry.add("spring.datasource.password", postgresContainer::getUsername);
     }
     @Test
     void AnswerIsNotNullIfTheyAreOnDatabase() {

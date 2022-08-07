@@ -10,7 +10,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.lifecycle.Startables;
+import org.testcontainers.utility.DockerImageName;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -21,6 +26,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@WebMvcTest(QuestionController.class)
 @ActiveProfiles("test")
 public class QuestionControllerIT {
+    static final PostgreSQLContainer<?> postgresContainer;
+    static{
+        postgresContainer = new PostgreSQLContainer<>("postgres:12")
+                .withDatabaseName("rest-spring-boot")
+                .withUsername("postgres")
+                .withPassword("postgres");
+    }
     @Autowired
     private MockMvc mockMvc;
 
@@ -47,7 +59,12 @@ public class QuestionControllerIT {
         saveQuestion.addAnswerToQuestion(answer);
         question = questionRepository.save(saveQuestion);
     }
-
+    @DynamicPropertySource
+    static void sourceConfiguration(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgresContainer::getJdbcUrl);
+        registry.add("spring.datasource.username", postgresContainer::getUsername);
+        registry.add("spring.datasource.password", postgresContainer::getUsername);
+    }
     @Test
     void callQuestionControllerMethodGetByIdShouldReturnResponseWithStatusOK() throws Exception{
         //Mockito.doReturn(Optional.of(question)).when(questionRepository).findById(question.getId());
