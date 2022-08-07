@@ -1,22 +1,15 @@
 package com.example.firstspringbootapp.controller;
 
-import com.example.firstspringbootapp.advice.QuestionRepresentationModel;
 import com.example.firstspringbootapp.entity.Answer;
 import com.example.firstspringbootapp.entity.Question;
 import com.example.firstspringbootapp.repository.QuestionRepository;
-import com.example.firstspringbootapp.service.QuestionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
