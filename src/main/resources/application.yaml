@@ -1,9 +1,38 @@
+profiles:
+  active: "dev"
+spring:
+#  datasource:
+  #    url: ${DB_URL}
+  #    driver-class-name: ${DB_DRIVER}
+  #    username: ${DB_USERNAME}
+  #    password: ${DB_PASSWORD}
+  datasource:
+    url: @db-url@
+    driver-class-name: @db-driver@
+    username: @db-username@
+    password: @db-password@
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      dialect: org.hibernate.dialect.PostgreSQL94Dialect
+    properties:
+      format-sql: true
+server:
+  port: 9595
+  servlet:
+    context-path: /api
+
+---
+
+profiles:
+  active: "prod"
 spring:
   datasource:
-    url: ${DB_URL}
-    driver-class-name: ${DB_DRIVER}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://postgres:5432/rest-spring-boot
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
   jpa:
     show-sql: true
     hibernate:
