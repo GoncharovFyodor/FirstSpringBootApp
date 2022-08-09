@@ -12,6 +12,7 @@ import org.springframework.hateoas.MediaTypes;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.lifecycle.Startables;
@@ -24,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 //@WebMvcTest(QuestionController.class)
-@ActiveProfiles("test")
+@TestPropertySource(locations="classpath:test.properties")
 public class QuestionControllerIT {
     static final PostgreSQLContainer<?> postgresContainer;
     static{
