@@ -26,7 +26,7 @@ import static org.springframework.boot.test.context.SpringBootTest.*;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations="classpath:test.properties")
 public class AnswerControllerIT {
-    static final PostgreSQLContainer<?> postgresContainer;
+    /*static final PostgreSQLContainer<?> postgresContainer;
     static{
         postgresContainer = new PostgreSQLContainer<>("postgres:12")
                 .withDatabaseName("rest-spring-boot")
@@ -97,5 +97,5 @@ public class AnswerControllerIT {
     @AfterEach
     void afterEach() {
     	questionRepository.deleteAll();
-    }
+    }*/
 }

@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@WebMvcTest(QuestionController.class)
 @TestPropertySource(locations="classpath:test.properties")
 public class QuestionControllerIT {
-    static final PostgreSQLContainer<?> postgresContainer;
+    /*static final PostgreSQLContainer<?> postgresContainer;
     static{
         postgresContainer = new PostgreSQLContainer<>("postgres:12")
                 .withDatabaseName("rest-spring-boot")
@@ -85,5 +85,5 @@ public class QuestionControllerIT {
                 .andExpect(jsonPath("name").value(question.getName()))
                 .andExpect(jsonPath("numOfCorrect").value(question.getNumOfCorrect()))
                 .andExpect(jsonPath("answers").isNotEmpty());
-    }
+    }*/
 }

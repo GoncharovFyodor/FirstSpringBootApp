@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @ExtendWith(MockitoExtension.class)
 @TestPropertySource(locations="classpath:test.properties")
 class AnswerServiceImplTest {
-    static final PostgreSQLContainer<?> postgresContainer;
+    /*static final PostgreSQLContainer<?> postgresContainer;
     static{
         postgresContainer = new PostgreSQLContainer<>("postgres:12")
                 .withDatabaseName("rest-spring-boot")
@@ -110,5 +110,5 @@ class AnswerServiceImplTest {
                                     ()->answerService.findBy(answer.getId())).getMessage())
                             .isEqualTo("Answer with id null not found"));
         }
-    }
+    }*/
 }

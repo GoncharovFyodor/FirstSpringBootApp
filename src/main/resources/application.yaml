@@ -1,16 +1,16 @@
 profiles:
   active: "dev"
 spring:
-#  datasource:
-  #    url: ${DB_URL}
-  #    driver-class-name: ${DB_DRIVER}
-  #    username: ${DB_USERNAME}
-  #    password: ${DB_PASSWORD}
   datasource:
-    url: jdbc:postgresql://localhost:5432/rest-spring-boot
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: postgres
+      url: ${DB_URL}
+      driver-class-name: ${DB_DRIVER}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+  #datasource:
+    #url: jdbc:postgresql://localhost:5432/rest-spring-boot
+    #driver-class-name: org.postgresql.Driver
+    #username: postgres
+    #password: postgres
   jpa:
     show-sql: true
     hibernate:

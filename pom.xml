@@ -95,7 +95,7 @@
         </plugins>
     </build>
     <profiles>
-        <profile>
+        <!--<profile>
             <id>dev</id>
             <properties>
                 <db-url>jdbc:postgresql://localhost:5432/rest-spring-boot</db-url>
@@ -103,7 +103,7 @@
                 <db-username>postgres</db-username>
                 <db-password>postgres</db-password>
             </properties>
-        </profile>
+        </profile>-->
         <profile>
             <id>prod</id>
             <properties>

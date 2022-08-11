@@ -3,14 +3,16 @@ package com.example.firstspringbootapp;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 //@SpringBootTest
 @ActiveProfiles("test")
+@TestPropertySource(locations="classpath:test.properties")
 class FirstSpringBootAppApplicationTests {
-
+/*
     static String hello="";
     String world="";
 
@@ -43,5 +45,5 @@ class FirstSpringBootAppApplicationTests {
     @AfterAll
     public static void afterAll(){
         System.out.println("After all ");
-    }
+    }*/
 }
