@@ -1,9 +1,6 @@
 package com.example.firstspringbootapp.service;
 
-import com.example.firstspringbootapp.entity.Answer;
-import com.example.firstspringbootapp.entity.Level;
 import com.example.firstspringbootapp.entity.Profile;
-import com.example.firstspringbootapp.exception.LevelNotFoundException;
 import com.example.firstspringbootapp.exception.ProfileNotFoundException;
 import com.example.firstspringbootapp.repository.ProfileRepository;
 import lombok.RequiredArgsConstructor;

@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: dockerfile
     ports:
-      - "9192:9191"
+      - "9595:9595"
     environment:
       DB_DRIVER: org.postgresql.Driver
       DB_URL: jdbc:postgresql://postgres:5432/rest-spring-boot
@@ -18,6 +18,10 @@ services:
       - postgres
   postgres:
     image: postgres
+    container_name: postgres
+    build:
+      context: ./
+      dockerfile: dockerfile.postgres
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres

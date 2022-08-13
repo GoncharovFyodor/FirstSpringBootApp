@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.firstspringbootapp.advice.AnswerRepresentationModel;
-import com.example.firstspringbootapp.advice.QuestionRepresentationModel;
 import com.example.firstspringbootapp.entity.Answer;
 import com.example.firstspringbootapp.service.AnswerService;
-import com.example.firstspringbootapp.service.QuestionService;
 
 import lombok.RequiredArgsConstructor;
 

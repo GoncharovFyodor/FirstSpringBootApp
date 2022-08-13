@@ -2,7 +2,6 @@ package com.example.firstspringbootapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
