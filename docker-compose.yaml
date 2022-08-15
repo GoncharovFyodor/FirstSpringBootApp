@@ -4,6 +4,7 @@ services:
   question-service:
     build:
       context: .
+      dockerfile: dockerfile
     ports:
       - "9595:9595"
     environment:
@@ -20,6 +21,7 @@ services:
     container_name: postgres
     build:
       context: ./
+      dockerfile: dockerfile.postgres
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres
